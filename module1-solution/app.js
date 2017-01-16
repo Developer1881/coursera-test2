@@ -16,17 +16,17 @@ function FoodController($scope) {
 
   function getNumberOfDishes(string){
     var res = ""
-    var n_dishes = string.split(',').length - 1
-    if (n_dishes >= 1 && n_dishes <= 3 ){
+    var n_dishes = string.split(',').length
+    if (n_dishes <= 0 || string.length == 0) {
+      res = "Enter data first"
+    }
+    else if (n_dishes >= 1 && n_dishes <= 3 ){
       res = "Enjoy!"
     }
     else if (n_dishes >= 4) {
       res = "Too Much"
     }
-      else if (n_dishes <= 0) {
-      res = "Enter data first"
-    }
-    return res
+        return res
   }
 
 }
