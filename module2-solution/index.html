@@ -38,10 +38,13 @@
           <button ng-click="showList.removeItem($index);">Remove Item</button>
         </li>
       </ol>
+
       <div class="emptyMessage"
-      ng-if="showList.errorMessage" >
-        Error: {{showList.errorMessage}}</div>
+      ng-if="showList.items.length == 0" >
+        Error: you buy everything already, go and it your cookies </div>
+
     </div>
+
     <!-- Already Bought List -->
     <div class="col-md-6" ng-controller='AlreadyBoughtController as showList'>
      <h2>Already Bought:</h2>
@@ -51,8 +54,8 @@
        </li>
      </ul>
      <div class="emptyMessage"
-     ng-if="showList.items" >
-       Error: bla</div>
+     ng-if="showList.items.length == 0" >
+       Error: you didn't buy enything yet </div>
     </div>
   </div>
 </div>

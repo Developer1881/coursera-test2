@@ -75,8 +75,6 @@ function ShoppingListCheckOffService() {
     return responce ;
   };
 
-
-
 }
 
 })();
