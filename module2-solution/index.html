@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" ng-app='ShoppingListApp'>
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" ng-controller='ToBuyController as showList'>
+      <ol>
+        <li ng-repeat="item in showList.items">
+          {{ item.quantity }} of {{ item.name }}
+          <button ng-click="showList.removeItem($index);">Remove Item</button>
+        </li>
+      </ol>
+      <div class="emptyMessage"
+      ng-if="showList.errorMessage" >
+        Error: {{showList.errorMessage}}</div>
+    </div>
+    <!-- Already Bought List -->
+    <div class="col-md-6" ng-controller='AlreadyBoughtController as showList'>
+     <h2>Already Bought:</h2>
+     <ul>
+       <li ng-repeat="item in showList.items">
+         {{ item.quantity }} of {{ item.name }}
+       </li>
+     </ul>
+     <div class="emptyMessage"
+     ng-if="showList.items" >
+       Error: bla</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
