@@ -12,8 +12,8 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 
   showList.items = ShoppingListCheckOffService.getItems2();
 
-  var test1 = ShoppingListCheckOffService.responce();
-  console.log(test1);
+  var test1 = ShoppingListCheckOffService.getItems2();
+  console.log(test1.length);
 
 
   showList.removeItem = function (itemIndex) {
