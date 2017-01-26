@@ -24,7 +24,7 @@
 
 
     <ol>
-      <li ng-repeat="item in itemAdder.foundItems ">
+      <li ng-repeat="item in itemAdder.found ">
       THIS IS  {{ item.description }}
       </li>
     </ol>
@@ -32,14 +32,7 @@
 </div>
 
 
-<div ng-controller='ShowController as showList'>
-    <ol>
-      <li ng-repeat="item in menu.items">
-          {{ item.desctiption }}
-        <button ng-click="showList.removeItem($index);">Remove Item</button>
-      </li>
-    </ol>
-  </div>
+
     <!-- found-items should be implemented as a component -->
     <found-items found-items="...." on-remove="...."></found-items>
   </div>
