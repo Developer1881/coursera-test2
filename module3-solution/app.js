@@ -5,22 +5,14 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
-.directive('foundItems', FoundItems)
 .directive('listFoundItems', ListFoundItems);
 
 
 
-function FoundItems() {
-  var ddo = {
-    template: '{{ item.description }}'
-  };
-
-  return ddo;
-}
-
 function ListFoundItems() {
   var ddo = {
     templateUrl: 'list.html'
+
 
 //bindToController: true,
 //link: listFoundItemsLink,
