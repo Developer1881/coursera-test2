@@ -35,6 +35,7 @@ function NarrowItDownController(MenuSearchService){
       MenuSearchService.getMatchedMenuItems(menu.itemName)
       .then(function (response){
         menu.found = response;
+        console.log('t7');
       })
       .catch(function (error) {
         console.log("Something went terribly wrong.");
