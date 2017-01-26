@@ -4,13 +4,27 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
-
-.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
-
-
-
+.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
+.directive('foundItems', FoundItems)
+.directive('listFoundItems', ListFoundItems);
 
 
+
+function FoundItems() {
+  var ddo = {
+    template: '{{ item.description }}'
+  };
+
+  return ddo;
+}
+
+function ListFoundItems() {
+  var ddo = {
+    templateUrl: 'list.html'
+  };
+
+  return ddo;
+}
 
 
 NarrowItDownController.$inject = ['MenuSearchService'];
@@ -36,16 +50,6 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
-  // List of shopping items
-  var items;
-
-  service.getMenuCategories = function () {
-  var response = $http({
-    method: "GET",
-    url: (ApiBasePath + "/menu_items.json")
-  });
-  return response;
-  };
 
 
   service.getMatchedMenuItems = function (itemName) {
@@ -66,20 +70,6 @@ function MenuSearchService($http, ApiBasePath) {
     });
   };
 
-
-  service.getCorrectItems = function (itemName) {
-    for (var item in items.menu_items){
-      console.log(item);
-    }
-  };
-
-  service.removeItem = function (itemIdex) {
-    items.splice(itemIdex, 1);
-  };
-
-  service.getItems = function () {
-    return items;
-  };
 }
 
 

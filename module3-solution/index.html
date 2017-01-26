@@ -24,9 +24,7 @@
 
 
     <ol>
-      <li ng-repeat="item in itemAdder.found ">
-      THIS IS  {{ item.description }}
-      </li>
+      <list-found-items  ng-repeat="item in itemAdder.found "> </list-found-items>
     </ol>
     </div>
 </div>
@@ -34,7 +32,7 @@
 
 
     <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
+  <!--   <found-items found-items="...." on-remove="...."></found-items>-->
   </div>
 
 </body>
