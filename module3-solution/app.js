@@ -60,7 +60,6 @@ function MenuSearchService($http, ApiBasePath) {
   };
 
 
-
   service.getCorrectItems = function (itemName) {
     for (var item in items.menu_items){
       console.log(item);
@@ -75,9 +74,6 @@ function MenuSearchService($http, ApiBasePath) {
     return items;
   };
 }
-
-
-
 
 
 })();
