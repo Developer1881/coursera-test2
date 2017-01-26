@@ -11,10 +11,16 @@ angular.module('NarrowItDownApp', [])
 
 function ListFoundItems() {
   var ddo = {
-    templateUrl: 'list.html'
-
-
-//bindToController: true,
+    templateUrl: 'list.html',
+    scope: {
+      items: '<',
+      menu: '=foundItems',
+      badRemove: '=',
+      onRemove: '&'
+    },
+    // controller: ListFoundItemsController,
+    //  controllerAs: 'menu',
+    //      transclude: true
 //link: listFoundItemsLink,
 //transclude: true
 };
@@ -32,7 +38,6 @@ function NarrowItDownController(MenuSearchService){
       MenuSearchService.getMatchedMenuItems(menu.itemName)
       .then(function (response){
         menu.found = response;
-        console.log('t7');
       })
       .catch(function (error) {
         console.log("Something went terribly wrong.");
