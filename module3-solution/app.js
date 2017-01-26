@@ -21,7 +21,12 @@ function FoundItems() {
 function ListFoundItems() {
   var ddo = {
     templateUrl: 'list.html'
-  };
+
+//bindToController: true,
+//link: listFoundItemsLink,
+//transclude: true
+};
+
 
   return ddo;
 }
