@@ -14,11 +14,22 @@ function NarrowItDownController(MenuSearchService){
   var promise = MenuSearchService.getMenuCategories();
 
   promise.then(function (response) {
-    menu.categories = response.data;
+    menu.menu_items = response.data;
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
   });
+
+  menu.getCorrectItems = function () {
+      menu.foundItems  = []
+    for (var item in menu.menu_items.menu_items){
+       if (menu.menu_items.menu_items[item].description.includes(menu.itemName)){
+         menu.foundItems .push(menu.menu_items.menu_items[item])
+       }
+    }
+  };
+
+
 }
 
 ShowController.$inject = ['MenuSearchService'];
@@ -27,8 +38,8 @@ function ShowController(MenuSearchService) {
 
   showList.items = MenuSearchService.getItems();
 
-  showList.removeItem = function (itemIndex) {
-    MenuSearchService.removeItem(itemIndex);
+  showList.removeItem = function (itemName) {
+
   };
 }
 
@@ -38,21 +49,22 @@ function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
   // List of shopping items
-  var items = [];
+  var items;
 
   service.getMenuCategories = function () {
   var response = $http({
     method: "GET",
     url: (ApiBasePath + "/menu_items.json")
   });
-
   return response;
   };
 
 
 
   service.getCorrectItems = function (itemName) {
-
+    for (var item in items.menu_items){
+      console.log(item);
+    }
   };
 
   service.removeItem = function (itemIdex) {
